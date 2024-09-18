@@ -63,7 +63,16 @@ def np_work():
   # print(aOnes)
   # print(aRnd)
 
+  nparr = np.random.randint(low=0, high=100, size=10) #array con valores int aleatorios
+  # print(nparr)
 
+  # nparr.sort()
+  # print(nparr)
+  # print(nparr.sum())
+
+  # print(nparr[2:4])
+  # print(nparr[nparr<60])
+  # print(nparr*2)
 
 np_work()
 
