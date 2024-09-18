@@ -1,0 +1,25 @@
+
+T5-samll:
+Consulta en leng natural:  List the name, born state and age of the heads of departments ordered by age.
+Consulta SQL generada:  SELECT name, birth state, age FROM departments AS a SELECT name FROM departments AS a 'age'
+Consulta en leng natural:  List the names of all actors.
+Consulta SQL generada:  SELECT names FROM actors
+Consulta en leng natural:  Show the movies released after 2010.
+Consulta SQL generada:  SELECT movies FROM movies WHERE 2010
+Consulta en leng natural:  Find the average salary of employees.
+Consulta SQL generada:  SELECT avg_sald FROM employees AS T1 JOIN employees AS T2 ON T1.staff_sald = T2.staff_sald JOIN employees AS T2 ON T1.staff_sald = T2.staff_sald JOIN employees AS T2 ON T1.staff_sald = T2.staff_sald JOIN employees AS T2 ON T2.staff_sald = T2.staff_sald = T2.staff_explan = 'average 'Employees = T2.
+Consulta en leng natural:  List the names of all actors order by age
+Consulta SQL generada:  SELECT names FROM actors AS a 'age'
+
+T5-base:
+Consulta en leng natural:  List the name, born state and age of the heads of departments ordered by age.
+Consulta SQL generada:  SELECT T1.name, T1.born_state, T1.age FROM department AS T1 JOIN department AS T2 ON T1.head_id = T2.head_id WHERE T2.age = "department"
+Consulta en leng natural:  List the names of all actors.
+Consulta SQL generada:  SELECT Name FROM actor WHERE actor_name = "Actor"
+Consulta en leng natural:  Show the movies released after 2010.
+Consulta SQL generada:  SELECT DISTINCT t1.release_date FROM Movies AS t1 JOIN Releases AS t2 ON t1.release_date = t2.release_date WHERE t1.year = 2010 AND t2.year = 2010
+Consulta en leng natural:  Find the average salary of employees.
+Consulta SQL generada:  SELECT avg(salary) FROM Employees
+Consulta en leng natural:  List the names of all actors order by age
+Consulta SQL generada:  SELECT name FROM actor WHERE age = ( SELECT t1.name FROM actor WHERE age = ( SELECT t1.name FROM actor WHERE age = ( SELECT t1.name FROM actor WHERE age = ( SELECT t1.name FROM actor WHERE age = ( SELECT t1.name FROM actor WHERE age = ) );
+

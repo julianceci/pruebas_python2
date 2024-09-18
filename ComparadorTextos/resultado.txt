@@ -1,0 +1,19 @@
+  Help on function contieneString in module __main__:
+  
+  ccoonnttiieenneeSSttrriinngg(text1, text2)
+      recorre el text1 y devuelve true si el text2 esta contenido en el.
+      
+-     :param text1: texto evaluar si contiene text2
+?                -
+
++     :param text: texto evaluar si contiene text2
+-     :param text2: texto a evaluar si está contenido en text2
+      :return: true o false
+      
+-     >>> contieneString('the rain in spain', 'in spain')
+?                                                  ^^^^
+
++     >>> contieneString('the rain in spain', 'in English')
+?                                                 +++++ ^
+
+      True
