@@ -1,6 +1,7 @@
 #Imports
-from token_utils import tokenize
+#from token_utils import tokenize
 from collections import Counter
+import re
 
 # Define Document class
 class Document:
@@ -19,7 +20,8 @@ class Document:
         self.word_counts = self._count_words()
 
     def _tokenize(self):
-        return tokenize(self.text)
+        #return tokenize(self.text)
+        return re.findall(r'\b\w+\b', self.text.lower())
         
     # non-public method to tally document's word counts with Counter
     def _count_words(self):
