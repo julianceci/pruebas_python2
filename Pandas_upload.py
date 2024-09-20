@@ -10,27 +10,27 @@ from sqlalchemy import create_engine
 # #########################################################################################################
 # Inserto lista de csv loteando con chunksize para que no muera.
 
-#engine = create_engine('postgresql://postgres:postgres@localhost:5432/postgres')
-#engine.connect()
+engine = create_engine('postgresql://root:root@localhost:5432/ny_taxi')
+engine.connect()
 
 #engine.dispose()
-filePath = '/home/julian/workspaces/prueba_python/datasources/yellow_tripdata_{}.csv.gz'
+filePath = '/home/julian/workspaces/pruebas_python2/datasources/yellow_tripdata_{}.csv.gz'
 #filePath = '/home/julian/Documents/jcZoomcamp2024/01-docker-terraform/ny-taxi-data/green_tripdata/green_tripdata_{}.csv.gz'
 
 #yearMonths = [year + '-' + str(month).zfill(2) for year in ['2019', '2020'] for month in range(1,13)]
 yearMonths = [year + '-' + str(month).zfill(2) for year in ['2021'] for month in range(1,2)]
 
 # #########################################################################################################
-# #defino inicialmente a la tabla (solo cuando quiero arrancar de cero!!!)
-# df = pd.read_csv(filePath.format('2019-01'), sep=",", compression="gzip", nrows=1)
+#defino inicialmente a la tabla (solo cuando quiero arrancar de cero!!!)
+df = pd.read_csv(filePath.format('2021-01'), sep=",", compression="gzip", nrows=1)
 
-# df.tpep_pickup_datetime = pd.to_datetime(df.tpep_pickup_datetime)
-# df.tpep_dropoff_datetime = pd.to_datetime(df.tpep_dropoff_datetime)
-# df.head(n=0).to_sql(name='yellow_taxi_data', con=engine, if_exists='replace')
+df.tpep_pickup_datetime = pd.to_datetime(df.tpep_pickup_datetime)
+df.tpep_dropoff_datetime = pd.to_datetime(df.tpep_dropoff_datetime)
+df.head(n=0).to_sql(name='yellow_taxi_data', con=engine, if_exists='replace')
 
-# # df.lpep_pickup_datetime = pd.to_datetime(df.lpep_pickup_datetime)
-# # df.lpep_dropoff_datetime = pd.to_datetime(df.lpep_dropoff_datetime)
-# # df.head(n=0).to_sql(name='green_taxi_data', con=engine, if_exists='replace')
+# df.lpep_pickup_datetime = pd.to_datetime(df.lpep_pickup_datetime)
+# df.lpep_dropoff_datetime = pd.to_datetime(df.lpep_dropoff_datetime)
+# df.head(n=0).to_sql(name='green_taxi_data', con=engine, if_exists='replace')
 # #########################################################################################################
 # sys.exit()
 
@@ -46,7 +46,7 @@ try:
             df.tpep_pickup_datetime = pd.to_datetime(df.tpep_pickup_datetime)
             df.tpep_dropoff_datetime = pd.to_datetime(df.tpep_dropoff_datetime)
 #            df['tpep_pickup_date'] = df['tpep_pickup_datetime'].dt.date
-#            df.to_sql(name='yellow_taxi_data', con=engine, if_exists='append')    
+            df.to_sql(name='yellow_taxi_data', con=engine, if_exists='append')    
 
             # df.lpep_pickup_datetime = pd.to_datetime(df.lpep_pickup_datetime)
             # df.lpep_dropoff_datetime = pd.to_datetime(df.lpep_dropoff_datetime)
@@ -55,8 +55,7 @@ try:
             t_end = time()
             print('inserted another chunk..., took %.3f seconds' % (t_end - t_start))
 finally:
-    None
-#    engine.dispose()
+    engine.dispose()
 
 # #------------------------------------------------------------------------------------------------------------------
 

@@ -1,9 +1,8 @@
 import sys, time, textwrap, contextlib
 import numpy as np
 import pandas as pd
-
  
-#sys.exit()
+sys.exit()
 ##########################################################################################################
 
 #--------------------------------------------------------------------------------------------------
@@ -75,47 +74,6 @@ def np_work():
   # print(nparr*2)
 
 np_work()
-
-#--------------------------------------------------------------------------------------------------
-#Decorators
-
-#Decorador @contextlib.contextmanager junto con un generador para crear un administrador de contexto llamado timer.
-# Este administrador de contexto mide el tiempo que tarda en ejecutarse el bloque de código dentro de with timer()
-@contextlib.contextmanager
-def timer():
-  start = time.time()
-  # Send control back to the context block
-  try:
-    yield   # (acá es donde se corre lo que se pone luego de la llamada del with.)
-  finally:
-    end = time.time()
-    print('Elapsed: {:.2f}s'.format(end - start))
-
-# with timer():
-#   print('This should take approximately 0.25 seconds')
-#   time.sleep(0.25)
-
-#otro ejeplos de decoradores.
-
-def print_return_type(func):
-  # Define wrapper(), the decorated function
-  def wrapper(*args, **kwargs):
-    # Call the function being decorated
-    result = func(*args, **kwargs)
-    print('{}() returned type {}'.format(
-      func.__name__, type(result)
-    ))
-    return result
-  # Return the decorated function
-  return wrapper
-  
-@print_return_type
-def foo(value):
-  return value
-
-print(foo(42))
-print(foo([1, 2, 3]))
-print(foo({'a': 42}))
 
 #--------------------------------------------------------------------------------------------------
 def contieneString(text1, text2):
@@ -283,5 +241,10 @@ def varios():
 
   number = sum(student_marks["Carlos"])/len(student_marks["Carlos"])
   print(f'Promedio de marks de Carlos: {number:1.2f}')
+
+  #uso doble de list comprenhension
+  str1='hola'
+  str2='1234'
+  print([x + y for y in str1 for x in str2])
 
 #varios()

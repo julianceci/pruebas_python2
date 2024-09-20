@@ -1,2 +1,4 @@
 .ipynb_checkpoints/
 datasources/
+ny-taxi-postgres-data/
+pgadmin-server-data/

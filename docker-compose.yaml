@@ -1,0 +1,29 @@
+networks:
+    my_network:
+      driver: bridge
+      name: pg-network
+
+services:
+  pgdatabase:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=ny_taxi
+    volumes:
+      - "./ny-taxi-postgres-data:/var/lib/postgresql/data:rw"
+    ports:
+      - "5432:5432"
+    networks:
+      - my_network
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    volumes:
+      - "./pgadmin-server-data:/var/lib/pgadmin/data:rw"
+    ports:
+      - "8080:80"
+    networks:
+      - my_network
