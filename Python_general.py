@@ -1,22 +1,29 @@
-import sys, time, textwrap, contextlib
+import sys, time, textwrap, contextlib, inspect
 import numpy as np
 import pandas as pd
  
-sys.exit()
+#sys.exit()
 ##########################################################################################################
 
 #--------------------------------------------------------------------------------------------------
 #Ejercicio de cajas de Despe
 def difcajas(cajas: list[int]) -> list[(int, int)]:
-
   """
-    calcula ajustes que hay que aplicar para que la matriz quede pareja
+    Calcula ajustes que hay que aplicar para que la matriz quede pareja.
 
-  :param cajas: array con cantidad de cajas en cada columna
-  :return: array que retorna los austes que hay que hacer en cada columna
+    Args:
+        cajas (float): array con cantidad de cajas en cada columna.
+        width (float): The width of the rectangle.
 
-  >>> difcajas([6,2,5,6,1,4])
-  [(1, -2), (2, 2), (3, -1), (4, -2), (5, 3), (6, 0)]
+    Returns:
+        float: array que retorna los austes que hay que hacer en cada columna.
+    
+    Raises:
+        N/A.
+
+    Example:
+      >>> difcajas([6,2,5,6,1,4])
+      [(1, -2), (2, 2), (3, -1), (4, -2), (5, 3), (6, 0)]
   """  
     
   cajas = [6,2,5,6,1,4]
@@ -26,8 +33,9 @@ def difcajas(cajas: list[int]) -> list[(int, int)]:
 
 cajas = [6,2,5,6,1,4]
 
-#print(cajas)
-#print(difcajas(cajas))
+print(cajas)
+print(difcajas(cajas))
+print(inspect.getdoc(difcajas))
 
 #--------------------------------------------------------------------------------------------------
 # Cosas de NP arrays ------------------------------------------------------------------------------
