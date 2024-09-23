@@ -7,7 +7,6 @@ Descripción del paquete.
 Puedes instalar este paquete usando:
 
 ## Activación de entorno virtula de python
-
 - python -m venv venv #creación
 - source venv/bin/activate #activación
 - deactivate
