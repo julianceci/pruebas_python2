@@ -10,7 +10,7 @@ from sqlalchemy import create_engine
 # #########################################################################################################
 # Inserto lista de csv loteando con chunksize para que no muera.
 
-engine = create_engine('postgresql://root:root@localhost:5432/ny_taxi')
+engine = create_engine('postgresql://root:root@localhost:5433/ny_taxi')
 engine.connect()
 
 #engine.dispose()

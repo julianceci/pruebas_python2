@@ -1,29 +1,61 @@
-networks:
-    my_network:
-      driver: bridge
-      name: pg-network
+version: '3.8'
 
 services:
   pgdatabase:
     image: postgres:13
+    container_name: postgres
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=ny_taxi
     volumes:
-      - "./ny-taxi-postgres-data:/var/lib/postgresql/data:rw"
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"  # Mapea el puerto 5433 del host al puerto 5432 dentro del contenedor
+
+  postgres:
+    image: postgres:13
+    container_name: metabase-postgres
+    environment:
+      - POSTGRES_USER=metabase
+      - POSTGRES_PASSWORD=metabase_password
+      - POSTGRES_DB=metabase_db
+    volumes:
+      - pgmtbdata:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-    networks:
-      - my_network
-  pgadmin:
-    image: dpage/pgadmin4
+
+  metabase:
+    image: metabase/metabase
+    container_name: metabase
     environment:
-      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
-      - PGADMIN_DEFAULT_PASSWORD=root
-    volumes:
-      - "./pgadmin-server-data:/var/lib/pgadmin/data:rw"
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: metabase_db
+      MB_DB_PORT: 5432
+      MB_DB_USER: metabase
+      MB_DB_PASS: metabase_password
+      MB_DB_HOST: postgres
     ports:
-      - "8080:80"
-    networks:
-      - my_network
+      - "3000:3000"
+    depends_on:
+      - postgres
+    volumes:
+      - metabase_data:/metabase-data
+
+volumes:
+   pgdata:
+   pgmtbdata:
+   metabase_data:
+  
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   environment:
+  #     - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+  #     - PGADMIN_DEFAULT_PASSWORD=root
+  #   volumes:
+  #     - "./pgadmin-server-data:/var/lib/pgadmin/data:rw"
+  #   ports:
+  #     - "8080:80"
+  #   networks:
+  #     - my_network
+
