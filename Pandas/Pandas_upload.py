@@ -18,7 +18,7 @@ filePath = '/home/julian/workspaces/pruebas_python2/datasources/yellow_tripdata_
 #filePath = '/home/julian/Documents/jcZoomcamp2024/01-docker-terraform/ny-taxi-data/green_tripdata/green_tripdata_{}.csv.gz'
 
 #yearMonths = [year + '-' + str(month).zfill(2) for year in ['2019', '2020'] for month in range(1,13)]
-yearMonths = [year + '-' + str(month).zfill(2) for year in ['2021'] for month in range(1,2)]
+yearMonths = [year + '-' + str(month).zfill(2) for year in ['2021'] for month in range(1,3)]
 
 # #########################################################################################################
 #defino inicialmente a la tabla (solo cuando quiero arrancar de cero!!!)
