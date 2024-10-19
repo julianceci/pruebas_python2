@@ -3,3 +3,4 @@ __pycache__/
 datasources/
 ny-taxi-postgres-data/
 pgadmin-server-data/
+venv/
